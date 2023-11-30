@@ -13,9 +13,9 @@ void check(const wstring& Text, const wstring& key, const bool destructCipherTex
         wstring decryptedText;
         modAlphaCipher cipher(key);
         cipherText = cipher.encrypt(Text);
-        //if (destructCipherText) // надо "портить"?
-            //cipherText.front() = tolower(cipherText.front()); // "портим"
-         //decryptedText = cipher.decrypt(cipherText); // расшифровывание
+        if(destructCipherText){ // надо "портить"?
+			cipherText+=L'и';
+		}
         decryptedText = cipher.decrypt(cipherText);
         wcout<<"key="<<key<<endl;
         wcout<<Text<<endl;
