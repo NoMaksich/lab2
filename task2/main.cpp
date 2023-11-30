@@ -1,12 +1,15 @@
 #include <iostream>
 #include "shifr.h"
 
-void check(const std::wstring& Text, const int key) {
+void check(const std::wstring& Text, const int key, const bool destructCipherText=false) {
     try {
         std::wstring cipherText;
         std::wstring decryptedText;
         Shifr cipher(key);
         cipherText = cipher.encrypt(Text);
+	if(destructCipherText){ // надо "портить"?
+		cipherText+=L'и';
+	}// "портим"
         decryptedText = cipher.decrypt(cipherText);
         std::wcout << L"key=" << key << std::endl;
         std::wcout << Text << std::endl;
@@ -27,6 +30,6 @@ int main() {
     std::wstring text;
     std::wcout << L"Enter the encryption text: ";
     getline(std::wcin, text);
-    check(text, columns);
+    check(text, columns, true);
     return 0;
 }
