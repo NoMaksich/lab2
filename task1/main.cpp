@@ -13,9 +13,9 @@ void check(const wstring& Text, const wstring& key, const bool destructCipherTex
         wstring decryptedText;
         modAlphaCipher cipher(key);
         cipherText = cipher.encrypt(Text);
-        //if (destructCipherText) // Ð½Ð°Ð´Ð¾ "Ð¿Ð¾ÑÑÐ¸ÑÑ"?
-            //cipherText.front() = tolower(cipherText.front()); // "Ð¿Ð¾ÑÑÐ¸Ð¼"
-         //decryptedText = cipher.decrypt(cipherText); // ÑÐ°ÑÑÐ¸ÑÑÐ¾Ð²ÑÐ²Ð°Ð½Ð¸Ðµ
+        //if (destructCipherText) // надо "портить"?
+            //cipherText.front() = tolower(cipherText.front()); // "портим"
+         //decryptedText = cipher.decrypt(cipherText); // расшифровывание
         decryptedText = cipher.decrypt(cipherText);
         wcout<<"key="<<key<<endl;
         wcout<<Text<<endl;
@@ -29,6 +29,6 @@ void check(const wstring& Text, const wstring& key, const bool destructCipherTex
 int main(int argc, char **argv)
 {
     setlocale(LC_ALL, "ru_RU.UTF-8");   
-    check(L"ÐÐÐ¢ÐÐÐ¬ÐÐÐÐÐ", L"Ð¡ÐÐÐ ÐÐ¢ÐÐ«Ð",true);
+    check(L"МЕТАЛЬНИКОВ", L"СЕКРЕТНЫЙ",true);
     return 0;
 }
